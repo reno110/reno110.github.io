@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Reno Satria Hasim – Full-Stack Web Developer</title>
+  <meta name="description" content="Portofolio Reno Satria Hasim, lulusan D3 Teknik Informatika Politeknik Negeri Pontianak. Full-stack web developer dengan latar belakang keamanan informasi.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reno Satria Hasim – Full-Stack Web Developer">
+  <meta property="og:description" content="Portofolio Reno Satria Hasim, lulusan D3 Teknik Informatika Polnep.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='800' text-anchor='middle' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
+
+  <style>
+    /* ==========================================================
+       1. VARIABEL DAN DASAR
+       ========================================================== */
+    :root {
+      --bg: #ffffff;
+      --alt: #f5f7fa;
+      --ink: #0b1220;
+      --muted: #5b6475;
+      --line: #e3e7ee;
+      --accent: #1d4ed8;
+      --accent-dark: #1e3fa8;
+      --tint: #eaf0ff;
+      --font: "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.7; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent-dark); }
+    :focus-visible { outline: 3px solid #f59e0b; outline-offset: 3px; border-radius: 4px; }
+    h2 { font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 12px; }
+    h3 { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.015em; margin: 0 0 8px; }
+
+    /* ==========================================================
+       2. TATA LETAK UMUM
+       ========================================================== */
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 92px 0; }
+    section.alt { background: var(--alt); }
+    .head { max-width: 62ch; margin-bottom: 44px; }
+    .head h2 { position: relative; padding-top: 18px; }
+    .head h2::before { content: ""; position: absolute; top: 0; left: 0; width: 36px; height: 4px; border-radius: 2px; background: var(--accent); }
+    .head p { margin: 0; color: var(--muted); }
+
+    /* ==========================================================
+       3. TOMBOL
+       ========================================================== */
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-family: var(--font); font-weight: 600; font-size: .95rem; text-decoration: none; cursor: pointer; background: transparent; color: var(--accent); border: 1.5px solid var(--accent); transition: transform .2s, background .2s, color .2s, box-shadow .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 12px 24px -14px var(--accent); }
+    .btn.sm { padding: 8px 16px; font-size: .88rem; }
+
+    /* ==========================================================
+       4. NAVBAR
+       ========================================================== */
+    header.top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 68px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+    .brand:hover { color: var(--ink); }
+    .brand span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: var(--ink); color: #fff; font-size: .78rem; font-weight: 800; letter-spacing: .02em; }
+    nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
+    nav a { position: relative; color: var(--muted); text-decoration: none; font-weight: 500; font-size: .93rem; padding: 8px 13px; white-space: nowrap; transition: color .2s; }
+    nav a::after { content: ""; position: absolute; left: 13px; right: 13px; bottom: 2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
+    nav a:hover, nav a.active { color: var(--ink); }
+    nav a.active::after { transform: scaleX(1); }
+
+    /* ==========================================================
+       5. HERO
+       ========================================================== */
+    .hero { background: radial-gradient(640px 420px at 88% 8%, var(--tint), transparent 70%); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; padding: 76px 28px 96px; }
+    .hero-text > * { animation: up .7s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-text > :nth-child(2) { animation-delay: .08s; }
+    .hero-text > :nth-child(3) { animation-delay: .16s; }
+    .hero-text > :nth-child(4) { animation-delay: .24s; }
+    .hero-text > :nth-child(5) { animation-delay: .32s; }
+    @keyframes up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    .status { display: inline-flex; align-items: center; gap: 10px; font-size: .88rem; font-weight: 600; color: #166534; background: #e8f7ee; padding: 6px 14px 6px 12px; border-radius: 999px; margin-bottom: 24px; }
+    .status i { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,163,74,.5); } 70%, 100% { box-shadow: 0 0 0 9px rgba(22,163,74,0); } }
+
+    h1 { font-weight: 800; font-size: clamp(2.9rem, 7.4vw, 5.6rem); line-height: 1.02; letter-spacing: -0.045em; margin: 0 0 14px; }
+    .role { margin: 0 0 20px; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 700; letter-spacing: -0.01em; color: var(--accent); }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 50ch; margin: 0 0 32px; }
+
+    .photo { position: relative; justify-self: end; width: 100%; max-width: 390px; animation: up .8s .2s cubic-bezier(.2,.7,.2,1) both; }
+    .photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 28px; background: var(--tint); border: 1px solid rgba(29,78,216,.18); transition: transform .35s; }
+    .photo:hover::before { transform: translate(6px, 6px); }
+    .frame { position: relative; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; display: grid; place-items: center; background: linear-gradient(160deg, var(--accent), var(--ink)); box-shadow: 0 30px 50px -30px rgba(11,18,32,.5); }
+    .frame span { font-weight: 800; font-size: 4.4rem; letter-spacing: .02em; color: rgba(255,255,255,.92); }
+    .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ==========================================================
+       6. TENTANG
+       ========================================================== */
+    .about { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
+    .about p { margin: 0 0 18px; color: var(--muted); max-width: 58ch; }
+    .about p:first-of-type { color: var(--ink); font-size: 1.12rem; }
+    .values { display: grid; gap: 14px; }
+    .value { background: var(--bg); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; padding: 18px 22px; transition: transform .25s, box-shadow .25s; }
+    .value:hover { transform: translateX(4px); box-shadow: 0 14px 28px -22px rgba(11,18,32,.5); }
+    .value b { display: block; font-size: 1.05rem; margin-bottom: 2px; }
+    .value span { display: block; color: var(--muted); font-size: .94rem; line-height: 1.55; }
+
+    /* ==========================================================
+       7. KEAHLIAN
+       ========================================================== */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+    .skill { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 24px; transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .skill:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 36px -26px rgba(29,78,216,.5); }
+    .skill h3 { font-size: 1.05rem; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .skill ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: .95rem; font-weight: 500; }
+    .skill li { display: flex; align-items: center; gap: 10px; }
+    .skill li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* ==========================================================
+       8. PROYEK
+       ========================================================== */
+    .projects { display: grid; gap: 24px; }
+    .project { display: flex; gap: 40px; align-items: center; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 36px; transition: transform .3s, border-color .3s, box-shadow .3s; }
+    .project:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 28px 48px -32px rgba(11,18,32,.4); }
+    .project .body { flex: 1 1 0; min-width: 0; }
+    .project h3 { font-size: 1.9rem; letter-spacing: -0.025em; margin-bottom: 10px; }
+    .project p { margin: 0 0 18px; color: var(--muted); }
+    .chip { display: inline-block; font-size: .8rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--tint); color: var(--accent-dark); margin-bottom: 14px; }
+    .checks { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 8px; font-size: .96rem; }
+    .checks li { position: relative; padding-left: 28px; }
+    .checks li::before { content: ""; position: absolute; left: 7px; top: .38em; width: 6px; height: 11px; border: solid var(--accent); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+    .tags li { font-size: .8rem; font-weight: 600; padding: 4px 11px; border-radius: 6px; background: var(--alt); border: 1px solid var(--line); }
+    .links { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 600; font-size: .95rem; }
+    .links .note { color: var(--muted); font-weight: 500; }
+    .shot { flex: 0 0 42%; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--alt); aspect-ratio: 4 / 3; }
+    .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .project:hover .shot img { transform: scale(1.04); }
+
+    /* ==========================================================
+       9. PENDIDIKAN
+       ========================================================== */
+    .edu { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; background: var(--bg); border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 16px; padding: 30px 34px; }
+    .edu small { display: block; font-size: .85rem; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+    .edu p { margin: 0; color: var(--muted); }
+    .gpa { text-align: right; font-weight: 800; font-size: 2.8rem; line-height: 1; letter-spacing: -0.04em; }
+    .gpa span { display: block; margin-top: 8px; font-size: .85rem; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+
+    /* ==========================================================
+       10. KONTAK DAN FOOTER
+       ========================================================== */
+    .contact { position: relative; overflow: hidden; background: var(--ink); color: #fff; border-radius: 28px; padding: 64px 56px; }
+    .contact::before { content: ""; position: absolute; right: -80px; top: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(79,119,255,.5), transparent 70%); pointer-events: none; }
+    .contact > * { position: relative; }
+    .contact h2 { color: #fff; font-size: clamp(2rem, 4.6vw, 3.2rem); margin-bottom: 14px; }
+    .contact p { color: #b4bfd3; max-width: 48ch; margin: 0 0 32px; font-size: 1.08rem; }
+    .contact .btn { color: #fff; border-color: rgba(255,255,255,.4); }
+    .contact .btn:hover { background: #fff; border-color: #fff; color: var(--ink); box-shadow: none; }
+    footer { padding: 36px 0 44px; color: var(--muted); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    /* ==========================================================
+       11. ANIMASI SAAT DI-SCROLL
+       ========================================================== */
+    .js .rv { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--d, 0) * 90ms); }
+    .js .rv.in { opacity: 1; transform: none; }
+
+    /* ==========================================================
+       12. RESPONSIF
+       ========================================================== */
+    @media (max-width: 900px) {
+      section { padding: 64px 0; }
+      .hero-grid, .about { grid-template-columns: 1fr; gap: 44px; }
+      .hero-grid { padding-top: 48px; padding-bottom: 64px; }
+      .photo { justify-self: center; max-width: 300px; margin-right: 18px; }
+      .project { flex-direction: column; align-items: stretch; padding: 26px; gap: 26px; }
+      .shot { flex: none; }
+      .bar { flex-wrap: wrap; padding-top: 10px; row-gap: 2px; }
+      .bar .btn { display: none; }
+      nav { order: 3; width: 100%; margin: 0 -13px; }
+      .gpa { text-align: left; }
+      .contact { padding: 40px 28px; border-radius: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .rv { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="#top"><span>RSH</span>Reno Satria Hasim</a>
+      <nav aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#proyek">Proyek</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <!-- Taruh file CV di folder cv/ dengan nama persis seperti di bawah -->
+      <a class="btn sm" href="cv/CV_Reno_Satria_Hasim.pdf" download>Unduh CV</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== HERO ========== -->
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <div class="status"><i></i>Terbuka untuk peluang kerja</div>
+          <h1>Reno Satria Hasim</h1>
+          <p class="role"></p>
+          <p class="lead">Lulusan D3 Teknik Informatika Polnep yang sudah membangun aplikasi web dengan pembayaran online dan aplikasi mobile dengan Flutter.</p>
+          <div class="btns">
+            <a class="btn" href="#proyek">Lihat proyek</a>
+            <a class="btn" href="#kontak">Hubungi saya</a>
+          </div>
+        </div>
+
+        <div class="photo">
+          <div class="frame">
+            <span>RSH</span>
+            <!-- Foto: simpan di img/foto.png (rasio 4:5, sebaiknya di bawah 300 KB). Jika file tidak ada, monogram RSH tetap tampil -->
+            <img src="img/Desain Tanpa Judul (3).png" alt="Foto Reno Satria Hasim" onerror="this.remove()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== TENTANG ========== -->
+    <section id="tentang">
+      <div class="wrap about">
+        <div class="rv">
+          <div class="head"><h2>Tentang saya</h2></div>
+          <p>Saya menyelesaikan pendidikan D3 Teknik Informatika di Politeknik Negeri Pontianak pada 2026. Selama kuliah, saya mengerjakan aplikasi web yang mencakup tampilan, database, sampai integrasi pembayaran online.</p>
+          <p>Saya juga mempelajari sistem keamanan informasi. Karena itu, di setiap fitur saya memperhatikan validasi input, autentikasi, dan perlindungan data pengguna sejak awal.</p>
+        </div>
+        <div class="values">
+          <div class="value rv" style="--d:1"><b>Rapi</b><span>Struktur kode dan tampilan yang konsisten, mudah dipelihara dan dikembangkan.</span></div>
+          <div class="value rv" style="--d:2"><b>Aman</b><span>Autentikasi terpisah untuk setiap peran dan data pengguna yang terlindungi.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KEAHLIAN ========== -->
+    <section id="keahlian" class="alt">
+      <div class="wrap">
+        <div class="head rv"><h2>Keahlian</h2><p>Teknologi yang saya gunakan dalam proyek dan perkuliahan.</p></div>
+        <div class="skills">
+          <div class="skill rv" style="--d:0"><h3>Frontend</h3><ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Tailwind CSS</li></ul></div>
+          <div class="skill rv" style="--d:1"><h3>Backend dan database</h3><ul><li>PHP</li><li>Laravel</li><li>MySQL</li><li>Midtrans</li></ul></div>
+          <div class="skill rv" style="--d:2"><h3>Mobile</h3><ul><li>Flutter</li><li>Dart</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROYEK ========== -->
+    <section id="proyek">
+      <div class="wrap">
+        <div class="head rv"><h2>Proyek</h2><p>Dua proyek yang mewakili kemampuan saya di web dan mobile.</p></div>
+        <div class="projects">
+
+          <article class="project rv">
+            <div class="body">
+              <span class="chip">Tugas Akhir</span>
+              <h3>Sujiah Tailor</h3>
+              <p>Aplikasi web manajemen pesanan untuk usaha jahit yang nyata.</p>
+              <ul class="checks">
+                <li>Pelanggan memesan dan mengunggah beberapa gambar referensi</li>
+                <li>Pembayaran DP dan pelunasan lewat Midtrans Snap</li>
+                <li>Autentikasi terpisah untuk pelanggan dan admin</li>
+                <li>Grafik pendapatan untuk admin</li>
+              </ul>
+              <ul class="tags"><li>Laravel 11</li><li>PHP 8.2</li><li>MySQL</li><li>Tailwind CSS</li><li>Chart.js</li></ul>
+              <div class="links">
+                <span class="note">Repositori privat</span>
+                <!-- Jika sudah ada demo online: <a href="https://LINK-DEMO">Lihat demo ↗</a> -->
+              </div>
+            </div>
+            <!-- Screenshot: img/sujiah-tailor.png. Jika file tidak ada, area ini otomatis hilang -->
+            <figure class="shot"><img src="img/sujiah-tailor.png" alt="Tampilan aplikasi Sujiah Tailor" onerror="this.closest('figure').remove()"></figure>
+          </article>
+
+          <article class="project rv">
+            <div class="body">
+              <span class="chip">Pemrograman Mobile</span>
+              <h3>my_money</h3>
+              <p>Aplikasi mobile yang saya buat untuk mata kuliah Pemrograman Mobile di semester 4.</p>
+              <ul class="checks">
+                <li>Dibangun dengan Flutter dan Dart</li>
+                <li>Rilis APK sudah dibangun dan bisa dipasang di Android</li>
+              </ul>
+              <ul class="tags"><li>Flutter</li><li>Dart</li><li>Android</li></ul>
+              <div class="links">
+                <a href="https://github.com/reno110/my_money">Kode di GitHub ↗</a>
+              </div>
+            </div>
+            <!-- Screenshot: img/my-money.png. Jika file tidak ada, area ini otomatis hilang -->
+            <figure class="shot"><img src="img/my-money.png" alt="Tampilan aplikasi my_money" onerror="this.closest('figure').remove()"></figure>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PENDIDIKAN ========== -->
+    <section id="pendidikan" class="alt">
+      <div class="wrap">
+        <div class="head rv"><h2>Pendidikan</h2></div>
+        <div class="edu rv">
+          <div>
+            <small>2026</small>
+            <h3>D3 Teknik Informatika</h3>
+            <p>Politeknik Negeri Pontianak (Polnep)</p>
+          </div>
+          <div class="gpa">3,66<span>IPK dari skala 4,00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KONTAK ========== -->
+    <section id="kontak">
+      <div class="wrap">
+        <div class="contact rv">
+          <h2>Mari berdiskusi.</h2>
+          <p>Silakan hubungi saya melalui kanal berikut.</p>
+          <div class="btns">
+            <a class="btn" href="mailto:renosatriah@gmail.com">Kirim email</a>
+            <a class="btn" href="https://github.com/reno110">GitHub</a>
+            <!-- Jika sudah punya LinkedIn: <a class="btn" href="https://www.linkedin.com/in/USERNAME">LinkedIn</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="wrap"><span>© 2026 Reno Satria Hasim</span><span>Pontianak, Indonesia</span></div>
+  </footer>
+
+  <script>
+    (function () {
+      // Tandai menu sesuai bagian yang sedang dibaca
+      var links = document.querySelectorAll("nav a"), map = {};
+      links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && map[e.target.id]) {
+            links.forEach(function (a) { a.classList.remove("active"); });
+            map[e.target.id].classList.add("active");
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      document.querySelectorAll("section[id]").forEach(function (s) { spy.observe(s); });
+
+      // Elemen muncul halus saat terlihat di layar
+      var reveal = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var el = e.target;
+          el.classList.add("in");
+          reveal.unobserve(el);
+          setTimeout(function () { el.classList.remove("rv", "in"); }, 1200);
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll(".rv").forEach(function (el) { reveal.observe(el); });
+    })();
+  </script>
+</body>
+</html>
